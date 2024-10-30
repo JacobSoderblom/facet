@@ -1,0 +1,21 @@
+{
+  "name": "core",
+  "type": "module",
+  "scripts": {
+    "build": "bun build.js && tsc --emitDeclarationOnly",
+    "lint": "biome check .",
+    "format": "biome format .",
+    "fix": "biome check . --write"
+  },
+  "files": ["./dist/*"],
+  "main": "./dist/index.js",
+  "types": "./dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs"
+    }
+  },
+  "dependencies": {
+    "turbo": "^2.2.3"
+  }
+}

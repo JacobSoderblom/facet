@@ -9,7 +9,9 @@
     "@biomejs/biome": "^1.9.4",
     "@total-typescript/tsconfig": "1.0.4",
     "esbuild": "0.24.0",
-    "typescript": "5.6.3"
+    "jsdom": "25.0.1",
+    "typescript": "5.6.3",
+    "vitest": "2.1.4"
   },
   "workspaces": [
     "packages/*"

@@ -5,7 +5,8 @@
     "build": "bun build.js && tsc --emitDeclarationOnly",
     "lint": "biome check .",
     "format": "biome format .",
-    "fix": "biome check . --write"
+    "fix": "biome check . --write",
+    "test": "vitest"
   },
   "files": ["./dist/*"],
   "main": "./dist/index.js",

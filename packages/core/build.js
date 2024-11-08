@@ -10,5 +10,8 @@ esbuild
     minify: true,
     format: "esm",
     bundle: true,
+    metafile: true,
   })
+  .then((res) => esbuild.analyzeMetafile(res.metafile))
+  .then(console.log)
   .catch(() => process.exit(1));

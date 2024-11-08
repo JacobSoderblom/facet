@@ -13,8 +13,6 @@
     "typescript": "5.6.3",
     "vitest": "2.1.4"
   },
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": ["packages/*"],
   "packageManager": "bun@1.1.33"
 }

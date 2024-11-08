@@ -2,7 +2,7 @@ import type { Effect } from "../../helpers/effect.js";
 import { debounceEffect } from "../debounce.js";
 import {
   describe,
-  it,
+  test,
   expect,
   vi,
   beforeEach,
@@ -29,7 +29,7 @@ describe("debounce", () => {
     vi.useRealTimers();
   });
 
-  it("should initialize effect after wait period", () => {
+  test("should initialize effect after wait period", () => {
     const node = document.createElement("div");
     const debouncedEffect = debounceEffect(mockEffect, 500);
     const result = debouncedEffect(node, { prop1: "initial" });
@@ -42,7 +42,7 @@ describe("debounce", () => {
     result.destroy();
   });
 
-  it("should debounce update calls", () => {
+  test("should debounce update calls", () => {
     const node = document.createElement("div");
     const debouncedEffect = debounceEffect(mockEffect, 500);
     const result = debouncedEffect(node, { prop1: "initial" });
@@ -64,7 +64,7 @@ describe("debounce", () => {
     result.destroy();
   });
 
-  it("should clear timeout and call destroy on destroy", () => {
+  test("should clear timeout and call destroy on destroy", () => {
     const node = document.createElement("div");
     const debouncedEffect = debounceEffect(mockEffect, 500);
     const result = debouncedEffect(node, { prop1: "initial" });

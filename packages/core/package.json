@@ -17,6 +17,12 @@
     }
   },
   "dependencies": {
+    "@floating-ui/dom": "^1.6.12",
+    "tabbable": "^6.2.0",
     "turbo": "^2.2.3"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3"
   }
 }

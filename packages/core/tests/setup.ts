@@ -1,4 +1,7 @@
 import { vi } from "vitest";
+import "@testing-library/jest-dom/vitest";
+
+// Mock the 'tabbable' module with your custom implementations
 
 if (!window.matchMedia) {
   window.matchMedia = vi.fn().mockImplementation((query) => {
@@ -31,3 +34,5 @@ if (!window.matchMedia) {
     return mediaQueryList;
   });
 }
+
+vi.mock("tabbable");

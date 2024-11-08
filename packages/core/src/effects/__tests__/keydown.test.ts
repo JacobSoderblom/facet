@@ -1,5 +1,5 @@
 import { keydown, escapeKeydown, type KeydownProps } from "../keydown.js";
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { describe, test, expect, vi, beforeEach, afterEach } from "vitest";
 
 vi.mock("../helpers/on", () => ({
   on: vi.fn((node, event, handler) => ({
@@ -21,7 +21,7 @@ describe("keydown", () => {
     vi.clearAllMocks();
   });
 
-  it("should call the correct handler on keydown", () => {
+  test("should call the correct handler on keydown", () => {
     const spaceHandler = vi.fn();
     const enterHandler = vi.fn();
     const props: KeydownProps = {
@@ -41,7 +41,7 @@ describe("keydown", () => {
     keydownEffect.destroy();
   });
 
-  it("should update handlers on update", () => {
+  test("should update handlers on update", () => {
     const initialHandler = vi.fn();
     const updatedHandler = vi.fn();
     keydownEffect = keydown(node, { handlers: { Enter: initialHandler } });
@@ -57,7 +57,7 @@ describe("keydown", () => {
     keydownEffect.destroy();
   });
 
-  it("should remove event listener on destroy", () => {
+  test("should remove event listener on destroy", () => {
     const handler = vi.fn();
     keydownEffect = keydown(node, { handlers: { Escape: handler } });
 
@@ -85,7 +85,7 @@ describe("escapeKeydown", () => {
     vi.clearAllMocks();
   });
 
-  it("should call the Escape handler on Escape keydown", () => {
+  test("should call the Escape handler on Escape keydown", () => {
     const escapeHandler = vi.fn();
     escapeKeydownEffect = escapeKeydown(node, { handler: escapeHandler });
 
@@ -96,7 +96,7 @@ describe("escapeKeydown", () => {
     escapeKeydownEffect.destroy();
   });
 
-  it("should not call the handler for non-Escape keys", () => {
+  test("should not call the handler for non-Escape keys", () => {
     const escapeHandler = vi.fn();
     escapeKeydownEffect = escapeKeydown(node, { handler: escapeHandler });
 

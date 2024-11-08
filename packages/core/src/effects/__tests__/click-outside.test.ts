@@ -1,6 +1,6 @@
 import {
   describe,
-  it,
+  test,
   expect,
   vi,
   beforeEach,
@@ -38,26 +38,26 @@ describe("clickOutside", () => {
     vi.clearAllMocks();
   });
 
-  it("calls handler on click outside", () => {
+  test("calls handler on click outside", () => {
     const outside = document.getElementById("outside");
     click(outside);
     expect(handler).toHaveBeenCalled();
   });
 
-  it("does not call handler on click inside", () => {
+  test("does not call handler on click inside", () => {
     const child = document.getElementById("child");
     click(child);
     expect(handler).not.toHaveBeenCalled();
   });
 
-  it("does not call onStart on pointerdown outside", () => {
+  test("does not call onStart on pointerdown outside", () => {
     const outside = document.getElementById("outside");
     const event = new MouseEvent("pointerdown", { bubbles: true });
     outside?.dispatchEvent(event);
     expect(onStart).not.toHaveBeenCalled();
   });
 
-  it("debounces handler calls", async () => {
+  test("debounces handler calls", async () => {
     const outside = document.getElementById("outside");
     click(outside, true);
     click(outside, true);
@@ -67,7 +67,7 @@ describe("clickOutside", () => {
     expect(handler).toHaveBeenCalledTimes(1);
   });
 
-  it("updates props correctly", () => {
+  test("updates props correctly", () => {
     const newHandler = vi.fn();
     effect.update({ handler: newHandler });
     const outside = document.getElementById("outside");
@@ -76,14 +76,14 @@ describe("clickOutside", () => {
     expect(newHandler).toHaveBeenCalled();
   });
 
-  it("removes event listeners on destroy", () => {
+  test("removes event listeners on destroy", () => {
     effect.destroy();
     const outside = document.getElementById("outside");
     click(outside);
     expect(handler).not.toHaveBeenCalled();
   });
 
-  it("handles multiple layers correctly", () => {
+  test("handles multiple layers correctly", () => {
     const newNode = document.createElement("div");
     document.body.appendChild(newNode);
     const newHandler = vi.fn();
@@ -95,26 +95,26 @@ describe("clickOutside", () => {
     newEffect.destroy();
   });
 
-  it("does not call handler if click is on node", () => {
+  test("does not call handler if click is on node", () => {
     click(node);
     expect(handler).not.toHaveBeenCalled();
   });
 
-  it("does not call handler if mouse button is not 0", () => {
+  test("does not call handler if mouse button is not 0", () => {
     const event = new MouseEvent("click", { button: 1, bubbles: true });
     const outside = document.getElementById("outside");
     outside?.dispatchEvent(event);
     expect(handler).not.toHaveBeenCalled();
   });
 
-  it("does not call handler if target is not an Element", () => {
+  test("does not call handler if target is not an Element", () => {
     const event = new MouseEvent("click", { bubbles: true });
     Object.defineProperty(event, "target", { value: null });
     document.dispatchEvent(event);
     expect(handler).not.toHaveBeenCalled();
   });
 
-  it("does not call handler if target is not in document", () => {
+  test("does not call handler if target is not in document", () => {
     const event = new MouseEvent("click", { bubbles: true });
     document.dispatchEvent(event);
     expect(handler).not.toHaveBeenCalled();

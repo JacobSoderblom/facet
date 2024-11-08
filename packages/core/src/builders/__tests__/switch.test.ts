@@ -1,8 +1,8 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, test, expect, vi } from "vitest";
 import { BuildSwitch } from "../switch.js";
 
 describe("BuildSwitch", () => {
-  it("should render trigger and input with correct attributes based on props", () => {
+  test("should render trigger and input with correct attributes based on props", () => {
     const { trigger, hiddenInput: input } = BuildSwitch({
       name: "testCheckbox",
       value: "testValue",
@@ -35,7 +35,7 @@ describe("BuildSwitch", () => {
     expect(inputNode.disabled).toBe(true);
   });
 
-  it("should call onChange with toggled value on trigger click", () => {
+  test("should call onChange with toggled value on trigger click", () => {
     const onChange = vi.fn();
     const { trigger, hiddenInput: input } = BuildSwitch({
       name: "testCheckbox",
@@ -54,7 +54,7 @@ describe("BuildSwitch", () => {
     expect(onChange).toHaveBeenCalledWith(true);
   });
 
-  it("should call onChange with toggled value on trigger keydown (Enter)", () => {
+  test("should call onChange with toggled value on trigger keydown (Enter)", () => {
     const onChange = vi.fn();
     const { trigger, hiddenInput: input } = BuildSwitch({
       name: "testCheckbox",
@@ -74,7 +74,7 @@ describe("BuildSwitch", () => {
     expect(onChange).toHaveBeenCalledWith(true);
   });
 
-  it("should call onChange with toggled value on trigger keydown (Space)", () => {
+  test("should call onChange with toggled value on trigger keydown (Space)", () => {
     const onChange = vi.fn();
     const { trigger, hiddenInput: input } = BuildSwitch({
       name: "testCheckbox",
@@ -94,7 +94,7 @@ describe("BuildSwitch", () => {
     expect(onChange).toHaveBeenCalledWith(true);
   });
 
-  it("should not call onChange on trigger keydown with other keys", () => {
+  test("should not call onChange on trigger keydown with other keys", () => {
     const onChange = vi.fn();
     const { trigger, hiddenInput: input } = BuildSwitch({
       name: "testCheckbox",
@@ -114,7 +114,7 @@ describe("BuildSwitch", () => {
     expect(onChange).not.toHaveBeenCalled();
   });
 
-  it("should set aria-checked correctly based on checked prop", () => {
+  test("should set aria-checked correctly based on checked prop", () => {
     const { trigger: triggerChecked } = BuildSwitch({
       name: "testCheckbox",
       value: "testValue",
@@ -144,7 +144,7 @@ describe("BuildSwitch", () => {
     expect(triggerUncheckedNode.getAttribute("aria-checked")).toBe("false");
   });
 
-  it("should set aria-required correctly based on required prop", () => {
+  test("should set aria-required correctly based on required prop", () => {
     const { trigger: triggerRequired } = BuildSwitch({
       name: "testCheckbox",
       value: "testValue",
@@ -166,7 +166,7 @@ describe("BuildSwitch", () => {
     expect(triggerNotRequiredNode.getAttribute("aria-required")).toBeNull();
   });
 
-  it("should clean up event listeners on destroy", () => {
+  test("should clean up event listeners on destroy", () => {
     const onChange = vi.fn();
     const { trigger, hiddenInput: input } = BuildSwitch({
       name: "testCheckbox",
@@ -192,7 +192,7 @@ describe("BuildSwitch", () => {
     expect(onChange).not.toHaveBeenCalled();
   });
 
-  it("should change attributes on update", () => {
+  test("should change attributes on update", () => {
     vi.useFakeTimers();
     let checked = false;
     const onChange = (c: boolean) => {

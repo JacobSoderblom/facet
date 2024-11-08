@@ -9,6 +9,8 @@ export * from "./effects/inert.js";
 export * from "./effects/keydown.js";
 export * from "./effects/portal.js";
 export * from "./effects/click-outside.js";
+export * from "./effects/auto-focus.js";
+export * from "./effects/floating.js";
 
 // helpers
 export * from "./helpers/effect.js";
